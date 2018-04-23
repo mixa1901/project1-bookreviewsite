@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block main %}
+
+		  <h2>{{ title }}</h2>
+		  <p>The book was written by {{ author }} in {{ year }}. ISBN: {{ isbn }} <br>
+		  {{ title }} has got rate of {{ goodreads }}/5 ({{ voters }} voters) on <a target="_blank" href="https://www.goodreads.com/" style="color:white">goodreads.com</a></p>
+
+		   <form action="/book?isbn={{ isbn }}" method="post">
+		    <div class="form-group">
+		      <div class="row">
+			      <div class="col-lg-10">
+				      <label for="review">Add your review:</label>
+				      <input autocomplete="off" type="text" autofocus class="form-control" name="review" >
+				  </div>
+				  <div class="col-lg-2">
+				      <label for="rate">Rate this book:</label>
+				      <input class="form-control float-right" placeholder="1 to 5" type="number" name="rate" min="1" max="5">
+				  </div>
+		  	  </div>
+		    </div>
+		    
+		    <button class="btn btn-light float-right">Post</button>
+		  </form>
+		  {% if session.get("switcher") == 1 %}
+		  	   <a href="/book?isbn={{ isbn }}&del=1" class="btn btn-light float-none"> Delete your previous review<a>
+		  {% endif %}
+		  <h2>Reviews</h2>
+		  <ul style="list-style-type:none">
+		  	{% for review, user, q, mark in reviews %}
+		  	<li><b>{{ user }}: </b>{{ review }}. ({{ mark }}/5)</li>
+
+		  	{% endfor %}
+		  </ul>
+
+
+{% endblock %}

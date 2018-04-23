@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block main %}
+
+		  <h2>Registration</h2>
+		  <form action="{{ url_for('registration') }}" method="post">
+		    <div class="form-group">
+		      <label for="username">Username:</label>
+		      <input autocomplete="off" type="text" autofocus class="form-control" name="username">
+		    </div>
+		    <div class="form-group">
+		      <label for="password">Password:</label>
+		      <input autocomplete="off" type="password" class="form-control" name="password">
+		    </div>
+		    <div class="form-group">
+		      <label for="re_password">Repeat password:</label>
+		      <input autocomplete="off" type="password" class="form-control" name="re_password">
+		    </div>
+		    <a href="/login" class="float-left btn btn-light">Have you already done registration?</a>
+		    <button class="btn btn-light float-right">Register me</button>
+		  </form>
+
+
+{% endblock %}

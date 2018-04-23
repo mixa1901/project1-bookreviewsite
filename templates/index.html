@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+
+		  <h2>Searching for a book</h2>
+		  <form action="{{ url_for('index') }}" method="post">
+		    <div class="form-group">
+		      <label for="book">Info:</label>
+		      <input autocomplete="off" type="text" autofocus class="form-control" name="book" placeholder="ISBN number of a book, the title of a book, or the author of a book">
+		    </div>
+		    <button class="btn btn-light float-right">Search</button>
+		  </form>
+
+
+{% endblock %}

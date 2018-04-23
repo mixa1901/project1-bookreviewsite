@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+
+		  <h2>Results for <b>"{{ query }}"</b></h2>
+		  <ul style="list-style-type:none">
+		  	{% for title, author, isbn in books %}
+		  	<li ><a href="/book?isbn={{ isbn }}" style="color:white"><b>{{ title }}</b> by {{ author }}.</a></li>
+		  	{% endfor %}
+		  </ul>
+		  <a href="/" class = "btn btn-light">Back to search</a>
+
+{% endblock %}
